@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circleImageView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/sigin_boy_img"
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="3dp" />
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linearLayout1"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="11">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/workdate"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:focusable="false"
+                            android:fontFamily="@font/calibri"
+                            android:hint="@string/work_date"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="50">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/workname"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/calibri"
+                            android:hint="@string/work_completed"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:padding="2dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="5">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/startingtime"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/calibri"
+                            android:hint="@string/total_time"
+                            android:inputType="time"
+                            android:maxLines="1"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="6">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/totalamount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/calibri"
+                            android:hint="@string/total_amount"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="6">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/paidamount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/calibri"
+                            android:hint="@string/paid_amount"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/calibri"
+                            android:text="@string/remaining_amount"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/remainingamount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/calibri"
+                            android:text="@string/app_name"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submit_btn"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/buttonshape"
+                    android:drawableStart="@drawable/ic_touch_app_white_24dp"
+                    android:drawableLeft="@drawable/ic_touch_app_white_24dp"
+                    android:fontFamily="@font/calibri"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="@string/submit"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>
