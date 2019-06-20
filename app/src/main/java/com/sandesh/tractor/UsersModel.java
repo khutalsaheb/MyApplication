@@ -5,9 +5,12 @@ class UsersModel {
     private long customer_id;
     private String  workname, worktime, workdate, totalamount, paidamount, reaminamount;
 
+    public UsersModel() {
+
+    }
 
 
-     String getWorkname() {
+    String getWorkname() {
         return workname;
     }
 

@@ -1,6 +1,7 @@
 package com.sandesh.tractor;
 
 import android.annotation.SuppressLint;
+import android.app.SearchManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements User_Adapter.Comp
     private DatabaseHelper databaseHelper;
     private String username;
     private String mobilenumber;
-    private final List<UsersModel> completeJobList = new ArrayList<>();
+    private List<UsersModel> completeJobList = new ArrayList<>();
     private AppCompatEditText user_name_txt, user_mobile_txt;
     private BottomSheetDialog mBottomSheetDialog;
 
@@ -78,7 +80,49 @@ public class MainActivity extends AppCompatActivity implements User_Adapter.Comp
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        SearchView searchView = (SearchView) menu.findItem(R.id.searchView).getActionView();
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchContact(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchContact(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+        // return true;
+    }
+
+    private void searchContact(String keyword) {
+
+        completeJobList.clear();
+        Cursor cursor = databaseHelper.search(keyword);
+
+        if (cursor.moveToFirst()) {
+            do {
+                completeJobList.add(new UsersModel(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2)
+
+
+                ));
+            } while (cursor.moveToNext());
+
+
+        }
+
+        recyclerView.setAdapter(completeJobAdapter);
+        completeJobAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -103,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements User_Adapter.Comp
             int rowcount;
             int colcount;
             File sdCardDir = Environment.getExternalStorageDirectory();
-            String filename = "MyBackUp.csv";
+            String filename = "Tractor.csv";
             // the name of the file to export with
 
             File saveFile = new File(sdCardDir, filename);

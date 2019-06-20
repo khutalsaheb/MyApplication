@@ -121,5 +121,11 @@ class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + CUSTOMER_TABLE_NAME, null);
     }
 
+    Cursor search(String keyword) {
+        SQLiteDatabase db = getReadableDatabase();
+        return db.rawQuery("select * from " + USER_TABLE_NAME + " where " + USER_COLUMN_NAME + " LIKE  '" + keyword + "%'", null);
+
+
+    }
 
 }
